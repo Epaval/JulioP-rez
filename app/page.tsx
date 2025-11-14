@@ -8,14 +8,14 @@ import ProjectCard from '../components/ProjectCard';
 import type { Project } from '../types/project';
 
 // Importamos iconos reales
-import { FaGithub, FaLinkedin, FaEnvelope } from 'react-icons/fa';
+import { FaGithub, FaLinkedin } from 'react-icons/fa';
 import { SiGmail } from 'react-icons/si';
 
 export default function Home() {
   const [projects, setProjects] = useState<Project[]>([]);
   const [loading, setLoading] = useState(true);
 
-  // Datos de ejemplo (puedes mantenerlos temporalmente)
+  // Datos de ejemplo
   const sampleProjects: Project[] = [
     {
       id: '1',
@@ -130,7 +130,7 @@ export default function Home() {
         setProjects(projectsData);
       } catch (error) {
         console.error('Error fetching projects:', error);
-        setProjects(sampleProjects); // fallback opcional
+        setProjects(sampleProjects);
       } finally {
         setLoading(false);
       }
@@ -139,11 +139,11 @@ export default function Home() {
     fetchProjects();
   }, []);
 
-  // Componente SocialLinks inline
+  // Componente SocialLinks
   const SocialLinks = () => (
     <div className="flex justify-center space-x-6 mt-6">
       <a
-        href="https://linkedin.com/in/julioperez"
+        href="https://linkedin.com/in/julio-pérez-2058b2b1"
         target="_blank"
         rel="noopener noreferrer"
         className="text-gray-700 hover:text-blue-600 transition-colors duration-300"
@@ -152,21 +152,15 @@ export default function Home() {
         <FaLinkedin size={28} />
       </a>
       <a
-        href="https://github.com/tuusuario"
+        href="https://github.com/Epaval"
         target="_blank"
         rel="noopener noreferrer"
-        className="text-gray-700 hover:text-black transition-colors duration-300"
+        className="text-gray-700 hover:text-blue-600 transition-colors duration-300"
         aria-label="GitHub"
       >
         <FaGithub size={28} />
       </a>
-      <a
-        href="mailto:julioz1126@gmail.com"
-        className="text-gray-700 hover:text-red-600 transition-colors duration-300"
-        aria-label="Email"
-      >
-        <SiGmail size={28} />
-      </a>
+       
     </div>
   );
 
@@ -270,12 +264,7 @@ export default function Home() {
           <h2 className="text-3xl font-bold mb-4">¿Tienes un proyecto?</h2>
           <p className="text-xl text-gray-300 mb-10">Hablemos y hagámoslo realidad.</p>
           <div className="flex flex-col sm:flex-row justify-center gap-4">
-            <a
-              href="mailto:julioz1126@gmail.com"
-              className="bg-white text-gray-900 hover:bg-gray-200 font-semibold py-3 px-8 rounded-lg transition duration-300 shadow-md"
-            >
-              Enviar Correo
-            </a>
+            <ContactButton />
             <a
               href="/cv.pdf"
               target="_blank"
@@ -291,5 +280,41 @@ export default function Home() {
         </div>
       </section>
     </Layout>
+  );
+}
+
+// Componente ContactButton (definido dentro del mismo archivo pero fuera de Home)
+function ContactButton() {
+  const [showTooltip, setShowTooltip] = useState(false);
+
+  const handleCopyEmail = async () => {
+    try {
+      await navigator.clipboard.writeText('julioz1126@gmail.com');
+      setShowTooltip(true);
+      setTimeout(() => setShowTooltip(false), 2000);
+    } catch (err) {
+      console.error('No se pudo copiar el correo:', err);
+      alert('No se pudo copiar el correo. Por favor, inténtalo manualmente.');
+    }
+  };
+
+  return (
+    <div className="relative inline-block">
+      <button
+        type="button"
+        onClick={handleCopyEmail}
+        className="bg-white text-gray-900 hover:bg-gray-200 font-semibold py-3 px-8 rounded-lg transition duration-300 shadow-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-400"
+        aria-label="Copiar correo electrónico"
+      >
+        Enviar Correo
+      </button>
+
+      {showTooltip && (
+        <div className="absolute bottom-full left-1/2 transform -translate-x-1/2 mb-2 px-3 py-2 bg-gray-800 text-white text-sm rounded-md shadow-lg whitespace-nowrap animate-fadeIn">
+          📧 Correo copiado
+          <div className="absolute top-full left-1/2 transform -translate-x-1/2 border-4 border-transparent border-t-gray-800"></div>
+        </div>
+      )}
+    </div>
   );
 }
