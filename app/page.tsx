@@ -208,7 +208,7 @@ export default function Home() {
                   <span className="text-2xl text-gray-700">🎨</span>
                 </div>
                 <h3 className="text-xl font-semibold text-gray-800 mb-2">Diseño UI/UX</h3>
-                <p className="text-gray-600">Figma, Prototipado, Experiencia de Usuario</p>
+                <p className="text-gray-600">Experiencia de Usuario</p>
               </div>
             </div>
           </div>
