@@ -9,7 +9,7 @@ import type { Project } from '../types/project';
 import Link from 'next/link';
 
 // Importamos iconos reales
-import { FaGithub, FaLinkedin } from 'react-icons/fa';
+import { FaGithub, FaLinkedin, FaWhatsapp } from 'react-icons/fa';
 import { SiGmail } from 'react-icons/si';
 
 export default function Home() {
@@ -140,31 +140,39 @@ export default function Home() {
     fetchProjects();
   }, []);
 
-  // Componente SocialLinks
-  const SocialLinks = () => (
-    <div className="flex justify-center space-x-6 mt-6">
-      <a
-        href="https://linkedin.com/in/julio-pérez-2058b2b1"
-        target="_blank"
-        rel="noopener noreferrer"
-        className="text-gray-700 hover:text-blue-600 transition-colors duration-300"
-        aria-label="LinkedIn"
-      >
-        <FaLinkedin size={28} />
-      </a>
-      <a
-        href="https://github.com/Epaval"
-        target="_blank"
-        rel="noopener noreferrer"
-        className="text-gray-700 hover:text-blue-600 transition-colors duration-300"
-        aria-label="GitHub"
-      >
-        <FaGithub size={28} />
-      </a>
-       
-    </div>
-  );
 
+
+const SocialLinks = () => (
+  <div className="flex justify-center space-x-6 mt-6">
+    <a
+      href="https://linkedin.com/in/julio-perez-2058b2b1"
+      target="_blank"
+      rel="noopener noreferrer"
+      className="text-gray-700 hover:text-blue-600 transition-colors duration-300"
+      aria-label="LinkedIn"
+    >
+      <FaLinkedin size={28} />
+    </a>
+    <a
+      href="https://github.com/Epaval"
+      target="_blank"
+      rel="noopener noreferrer"
+      className="text-gray-700 hover:text-blue-600 transition-colors duration-300"
+      aria-label="GitHub"
+    >
+      <FaGithub size={28} />
+    </a>
+    <a
+      href="https://wa.me/584244388859"
+      target="_blank"
+      rel="noopener noreferrer"
+      className="text-gray-700 hover:text-green-500 transition-colors duration-300"
+      aria-label="WhatsApp"
+    >
+      <FaWhatsapp size={28} />
+    </a>
+  </div>
+);
   return (
     <Layout>
       {/* Hero Section */}
