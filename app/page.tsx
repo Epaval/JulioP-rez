@@ -6,6 +6,7 @@ import { db } from '../lib/firebase';
 import Layout from '../components/Layout';
 import ProjectCard from '../components/ProjectCard';
 import type { Project } from '../types/project';
+import Link from 'next/link';
 
 // Importamos iconos reales
 import { FaGithub, FaLinkedin } from 'react-icons/fa';
@@ -265,14 +266,12 @@ export default function Home() {
           <p className="text-xl text-gray-300 mb-10">Hablemos y hagámoslo realidad.</p>
           <div className="flex flex-col sm:flex-row justify-center gap-4">
             <ContactButton />
-            <a
-              href="/cv.pdf"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="border-2 border-white text-white hover:bg-white hover:text-gray-900 font-semibold py-3 px-8 rounded-lg transition duration-300"
-            >
-              Descargar CV
-            </a>
+            <Link
+            href="/cv"
+            className="border-2 border-white text-white hover:bg-white hover:text-gray-900 font-semibold py-3 px-8 rounded-lg transition duration-300"
+          >
+            Ver CV Completo
+          </Link>
           </div>
           <div className="mt-12">
             <SocialLinks />
