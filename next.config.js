@@ -6,7 +6,8 @@ const nextConfig = {
       'images.unsplash.com',
       'via.placeholder.com',
       'picsum.photos',
-      'source.unsplash.com'
+      'source.unsplash.com',
+      'res.cloudinary.com', // 👈 opcional, pero recomendable mantenerlo
     ],
     remotePatterns: [
       {
@@ -24,6 +25,12 @@ const nextConfig = {
       {
         protocol: 'https',
         hostname: 'picsum.photos',
+        port: '',
+        pathname: '/**',
+      },
+      {
+        protocol: 'https',
+        hostname: 'res.cloudinary.com', // 👈 Cloudinary habilitado
         port: '',
         pathname: '/**',
       },
